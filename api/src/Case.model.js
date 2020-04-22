@@ -9,6 +9,12 @@ const caseSchema = new mongoose.Schema({
     },
     reviewed: {
         type: Boolean
+    },
+    reviewedById: {
+        type: String
+    },
+    conditionId: {
+        type: String
     }
 });
 

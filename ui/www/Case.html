@@ -15,6 +15,18 @@
     </div>
 
     <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-3">
+            <label for="exampleFormControlTextarea1" id="loggedInLabel" style="margin-bottom: 30px !important;"></label>
+        </div>
+
+        <div class="col-md-2">
+            <a id="logout" onclick="logout()" > <u> Logout</u> </a>
+        </div>
+    </div>    
+
+    <div class="row">
 
         <div class="col-md-7">
             <label for="caseArea">Please Review this Case</label>
@@ -25,12 +37,10 @@
 
             <label for="exampleFormControlTextarea1">Select Condition</label>
 
-            <select id="condition" name="conditions" class="selectpicker show-tick" > </select>
-            
+            <select id="condition" name="conditions" class="selectpicker show-tick" multiple style="height: 250px !important;" >
+            </select>
 
-
-
-            <button type="button" id="btnNextCase" class="btn btn-primary mb-2" style="margin-top: 200px !important;" >Next Case</button>
+            <button type="button" id="btnNextCase" class="btn btn-primary mb-2" style="margin-top: 70px; margin-left: 350px  !important;" >Next Case</button>
 
         </div>
 
@@ -42,51 +52,90 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
-
-    let dropdown = $('#condition');
-    dropdown.empty();
-    dropdown.prop('selectedIndex', 0);
-
-    const url = 'http://localhost:8080/conditions';
     
-    $.getJSON(url, function (data) {
-        $.each(data, function (key, entry) {
-            dropdown.append($('<option></option>').attr('value', entry.code).text(entry.name));
-        })
-    });
+    const baseURL = 'http://localhost:8080';
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    let currentCaseId;
+    
+    //populate condition drop-down
+    populateConditionDropDown();
 
     //fill text area
-    var loggedInUser = localStorage.getItem("loggedInUser");
-    console.log("loggedInUser :" + loggedInUser)
-
-
-    const urlFetchCase = 'http://localhost:8080/case?userName='+loggedInUser;
-
-    $.getJSON(urlFetchCase, function (data) {
-        $('#caseArea').val(data.caseData);
+    populateCaseDetail();
+    
+   
+    
+    //next button click event handler
+    $("#btnNextCase").click(function(e) {
+        submitAfterReview();
     });
+    
+    
 
+    function populateCaseDetail(){
+        console.log("loggedInUser :" + loggedInUser);
+        
+        $.getJSON(baseURL + "/case?userName=" +loggedInUser, function (data) {
+            $('#caseArea').val(data.caseData);
+            currentCaseId = data._id;
+        });
+
+        $('#loggedInLabel').text("Logged in as: " + loggedInUser);
+    }
     
     
-    //button click
-    $("btnNextCase").click(function(e) {
-        e.preventDefault();
+    //populate condition dropdown
+    function populateConditionDropDown(){
+
+        let dropdown = $('#condition');
+        dropdown.empty();
+        dropdown.prop('selectedIndex', 0);
+        dropdown.append($('<option></option>').attr('id', 0).text('Please select a condition'));
+        $.getJSON(baseURL + "/conditions", function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('id', entry._id).text(entry.name + "( " + entry.code + " )"));
+            })
+        });
+    }
+    
+    
+    //Submit case after review
+    function submitAfterReview() {
+        
+        let selectedConditionId = $( "#condition option:selected" ).attr("id");
+        if (!currentCaseId){
+            alert('Your reviews are completed please come back later');
+            return;
+        }
+
+        if ( ! selectedConditionId || selectedConditionId == 0){
+            alert('Please select a condition');
+            return;
+        }
+
         $.ajax({
             type: "POST",
-            url: "/pages/test/",
+            url: baseURL + "/case",
             data: {
-                id: $(this).val(), // < note use of 'this' here
-                access_token: $("#access_token").val()
+                caseId: currentCaseId,
+                condition: selectedConditionId,
+                userId: loggedInUser
             },
             success: function(result) {
-                alert('ok');
+                location.reload();
             },
             error: function(result) {
-                alert('error');
+                alert('Could not review case');
             }
         });
-    });
+        
+    }
+
+    function logout(){
+        console.log("logging out " + loggedInUser);
+        localStorage.setItem("loggedInUser", "");
+        window.location.href = "Login.html";
+    }
 
 </script>
 

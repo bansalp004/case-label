@@ -53,20 +53,32 @@ app.get("/case", async (req, res) => {
             reviewed: false
         }
     );
+    
+    if (! cases || cases.length === 0){
+        cases[0] = {caseData : "You are Done"};
+    }
+    
     res.json(cases[0]);
 });
 
 
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
+
 //update case to reviewed
 app.post("/case", async (req, res) => {
 
-    let caseId = req.query.caseId;
+    console.log(req.body);
     
-    console.log("caseId" + caseId)
+    const caseId = req.body.caseId;
+    const condition = req.body.condition;
+    const userId = req.body.userId;
+
+    console.log("caseId" + caseId + " condition: " + condition + " userId: " + userId)
     const ObjectId = require('mongoose').Types.ObjectId;
     
     const query = {_id: new ObjectId(caseId)};
-    await Case.updateOne(query ,{reviewed: true});
+    await Case.updateOne(query, {reviewed: true, conditionId: condition, reviewedById: userId});
     res.json({});
 });
 
