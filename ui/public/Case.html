@@ -104,7 +104,7 @@
         
         let selectedConditionId = $( "#condition option:selected" ).attr("id");
         if (!currentCaseId){
-            alert('Your reviews are completed please come back later');
+            alert('Your have completed all your reviews, please come back later');
             return;
         }
 
@@ -122,6 +122,7 @@
                 userId: loggedInUser
             },
             success: function(result) {
+                alert('Case reviewed successfully');
                 location.reload();
             },
             error: function(result) {

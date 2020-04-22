@@ -1,12 +1,13 @@
 # Doctor Case Label
 
-- Doctor Case Labelling EHR System, Bring cases assigned to a doctor for them to be able to review, each case can be tagged by a condition, 
-once user click next, next case is made available for review  
+- Doctor Case Labelling EHR System, Once login, bring assigned cases for them to review, each case can be tagged by a condition, 
+once click next, next ordered case is made available for review.  
 
 ## How to run (backend api + mongodb)
 1. In your terminal, navigate to home directory
 2. docker-compose up (this ll also populate test data for users (doctors), cases and conditions.
-3. Backend API server starts on port 8080 open your browser and hit http://localhost:8080/status make sure you receive "OK"  
+3. Backend API server starts on port 8080 open your browser and hit http://localhost:8080/status make sure you receive "OK"
+4. MongoDB server starts at port 27017 and exposed to connect out of docker context.   
 
 ## How to run the Client
 1. In another terminal, navigate to the `client` directory.

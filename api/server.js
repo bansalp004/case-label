@@ -114,16 +114,13 @@ app.listen(PORT, function () {
         console.log("MongoDb connected");
 
         console.log("inserting sample users");
-        //userDataPopulation();
+        userDataPopulation();
         
-
         console.log("inserting conditions");
-        //conditionDataPopulation();
-
-
-        console.log("inserting conditions");
-        //caseDataPopulation();
+        conditionDataPopulation();
         
+        console.log("inserting conditions");
+        caseDataPopulation();
 
     });
 
