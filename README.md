@@ -1,10 +1,11 @@
 # Doctor Case Label
 
-- This repository is for a dockerize app backed by node-express server spin up with mongodb. 
+- Doctor Case Labelling EHR System, Bring cases assigned to a doctor for them to be able to review, each case can be tagged by a condition, 
+once your click next , next case is made available for review  
 
 ## How to run (backend api + mongodb)
 1. In your terminal, navigate to home directory
-2. docker-compose up
+2. docker-compose up (this ll also populate test data for users (doctors), cases and conditions.
 
 ## How to run the Client
 1. In another terminal, navigate to the `client` directory.
@@ -13,3 +14,4 @@
 
 ## Check if all good
 1. While client is running, open your browser in http://localhost:3000/
+2. enter user name as "user1@gmail.com" and password as : test123
