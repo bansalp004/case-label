@@ -26,6 +26,11 @@ app.get("/conditions", async (req, res) => {
     res.json(conditions);
 });
 
+app.get("/status", async (req, res) => {
+    res.json("ok");
+});
+
+
 
 app.get("/user-create", async (req, res) => {
     const user = new User({username: "userTest"});
@@ -61,9 +66,28 @@ app.get("/case", async (req, res) => {
     res.json(cases[0]);
 });
 
-
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
+
+
+//Login
+app.post("/login", async (req, res) => {
+
+    let userName = req.body.username;
+    let password = req.body.password;
+    const users = await User.find(
+        {
+            username: userName,
+            password: password
+        }
+    );
+
+    if (! users || users.length === 0){
+        users[0] = {error : "Invalid Login Credential"};
+    }
+
+    res.json(users[0]);
+});
 
 //update case to reviewed
 app.post("/case", async (req, res) => {

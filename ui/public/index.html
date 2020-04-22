@@ -47,33 +47,28 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnlogin").click(function () {
-            var ajax = {
-                user_id: $("#txtuser").val(),
-                user_password: $("#txtpass").val(),
-            }
+
+            
             $.ajax({
-                url: "http://localhost:8080/users",
-                type: "GET",
-                data: ajax,
-                success: function (data, textStatus, jqXHR) {
-                    var ajax = {
-                        data: data
+                type: "POST",
+                url: "http://localhost:8080/login",
+                data: {
+                    username: $("#txtuser").val(),
+                    password: $("#txtpass").val()
+                },
+                success: function(result) {
+                    if (result.error){
+                        alert(result.error);
                     }
-                    console.log(data);
-                    let loggedUser
-                    for (var key in data) {
-                        if (data[key].username === $("#txtuser").val()) {
-                            console.log("login successful");
-                            loggedUser = data[key].username
-                            localStorage.setItem("loggedInUser", loggedUser);
-                            console.log("user id " + data[key]._id);
-                            window.location.href = "Case.html";
-                        }
-                    }
-                    if (!loggedUser){
-                        alert("Incorrect Login Credential")
+                    else{
+                        localStorage.setItem("loggedInUser", $("#txtuser").val());
+                        console.log("user id " +$("#txtuser").val());
+                        window.location.href = "Case.html";
                     }
                 },
+                error: function(result) {
+                    alert('Invalid credential');
+                }
             });
         })
     });
