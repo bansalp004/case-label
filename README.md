@@ -1,7 +1,7 @@
 # Doctor Case Label
 
 - Doctor Case Labelling EHR System, Bring cases assigned to a doctor for them to be able to review, each case can be tagged by a condition, 
-once your click next , next case is made available for review  
+once user click next, next case is made available for review  
 
 ## How to run (backend api + mongodb)
 1. In your terminal, navigate to home directory
