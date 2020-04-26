@@ -20,13 +20,13 @@ once click next, next ordered case is made available for review.
 
 ## sevice interaction diagram
 <p align="center">
-  <img src="https://drive.google.com/open?id=13UJji9IwnV3RFC2aVWUWImTS2jS0srIl"/>
+  <img src="https://drive.google.com/uc?export=view&id=13UJji9IwnV3RFC2aVWUWImTS2jS0srIl"/>
   <br/>
 </p>
 
 
 ## data-model diagram
 <p align="center">
-  <img src="https://drive.google.com/open?id=1DO4y1M8QPzFyxv2UH0BjS0O07B0O8T5b"/>
+  <img src="https://drive.google.com/uc?export=view&id=1DO4y1M8QPzFyxv2UH0BjS0O07B0O8T5b"/>
   <br/>
 </p>
