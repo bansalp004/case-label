@@ -5,7 +5,7 @@ once click next, next ordered case is made available for review.
 
 - its a micro-service based project which has 2 services - user-service (maintain user operation), case-service (maintain case related operations)
 
-## How to run (backend api + mongodb)
+## How to run (backend services + mongodb)
 1. In your terminal, navigate to home directory
 2. docker-compose up (this ll also populate test data for users (doctors), cases and conditions.
 3. Backend API server starts on port 8080 (user-service) and 8081 (case-service) open your browser and hit http://localhost:8080/status make sure you receive "OK"
