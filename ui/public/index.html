@@ -10,7 +10,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-6 align-self-center">
-      <h2>Login</h2>
+      <h2>User Login</h2>
       <hr>
       <form>
         <div class="form-group">
@@ -45,33 +45,44 @@
 
 
 <script type="text/javascript">
+
+    const baseURL = 'http://localhost:8080/';
+    
     $(document).ready(function () {
         $("#btnlogin").click(function () {
-
             
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:8080/login",
-                data: {
-                    username: $("#txtuser").val(),
-                    password: $("#txtpass").val()
-                },
-                success: function(result) {
-                    if (result.error){
-                        alert(result.error);
-                    }
-                    else{
-                        localStorage.setItem("loggedInUser", $("#txtuser").val());
-                        console.log("user id " +$("#txtuser").val());
-                        window.location.href = "Case.html";
-                    }
-                },
-                error: function(result) {
-                    alert('Invalid credential');
-                }
-            });
+            //Login a user
+            doLogin()
+           
         })
     });
+
+    function doLogin() {
+        $.ajax({
+            type: "POST",
+            url: baseURL+ "login",
+            data: {
+                username: $("#txtuser").val(),
+                password: $("#txtpass").val()
+            },
+            success: function(result) {
+                if (result.error){
+                    alert(result.error);
+                }
+                else{
+                    localStorage.setItem("loggedInUser", $("#txtuser").val());
+                    console.log("user id " +$("#txtuser").val());
+                    window.location.href = "Case.html";
+                }
+            },
+            error: function(result) {
+                console.log(JSON.stringify(result))
+                alert('System error - Please try again later');
+            }
+        });
+    }
+
+
 </script>
 </html>
 
