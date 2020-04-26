@@ -1,7 +1,10 @@
-const User = require("../src/User.model");
+const User = require("../model/User.model");
 
 const userDataPopulation = () => {
 
+    User.deleteMany().then( () => {
+        console.log("cleaned up users")
+    });
     const users =
         [{username: "user1@gmail.com", password: "test123", firstName : "Dr. Joe", lastName:"Smith"},
          {username: "user2@gmail.com", password: "test123", firstName : "Dr. Neelam", lastName:"Khatri"}];

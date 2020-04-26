@@ -1,7 +1,11 @@
 
-const Condition = require("../src/Condition.model");
+const Condition = require("../model/Condition.model");
 
 const conditionDataPopulation = () => {
+
+    Condition.deleteMany().then( () => {
+        console.log("cleaned up Condition")
+    });
 
     const conditions =
         [   { name : "Infectious gastroenteritis and colitis" , code : "A09" },
