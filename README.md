@@ -36,5 +36,5 @@ once click next, next ordered case is made available for review.
 
 ## user manual
 
-https://docs.google.com/document/d/1NeD6ytZRzrMz7-ZaU-3tepCT4Wj-NZZqAVT6m8sIpGU/edit?usp=sharing
+https://drive.google.com/open?id=1J450LPDpMU2KxwnJ4IZs-kAs_LXOyc5o
 
