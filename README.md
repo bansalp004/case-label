@@ -23,18 +23,21 @@ once click next, next ordered case is made available for review.
 
 ## sevice interaction diagram
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=13UJji9IwnV3RFC2aVWUWImTS2jS0srIl"/>
+  <img src="https://drive.google.com/uc?export=view&id=1VK9CF-84OhI7Z_-t5oH-LQ0UnwyIg6uJ"/>
   <br/>
 </p>
 
 
 ## data-model diagram
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1DO4y1M8QPzFyxv2UH0BjS0O07B0O8T5b"/>
+  <img src="https://drive.google.com/uc?export=view&id=1eiMfzaeYzSENbaDO0Gup1MCAO5jpfECo"/>
   <br/>
 </p>
 
 ## user manual
 
-https://drive.google.com/open?id=1J450LPDpMU2KxwnJ4IZs-kAs_LXOyc5o
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1NeD6ytZRzrMz7-ZaU-3tepCT4Wj-NZZqAVT6m8sIpGU"/>
+  <br/>
+</p>
 
