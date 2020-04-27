@@ -35,9 +35,6 @@ once click next, next ordered case is made available for review.
 </p>
 
 ## user manual
+https://docs.google.com/document/d/1NeD6ytZRzrMz7-ZaU-3tepCT4Wj-NZZqAVT6m8sIpGU/edit?usp=sharing
 
-<p align="center">
-  <img src="https://docs.google.com/document/d/1NeD6ytZRzrMz7-ZaU-3tepCT4Wj-NZZqAVT6m8sIpGU/edit?usp=sharing"/>
-  <br/>
-</p>
 
