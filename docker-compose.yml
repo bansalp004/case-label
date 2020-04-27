@@ -11,7 +11,14 @@ services:
       ports:
         - '8081:8081'
       depends_on:
-        - mongo    
+        - mongo
+  ui-service:
+        build: ./ui
+        ports:
+          - '80:80'
+        depends_on:
+          - user-service
+          - case-service          
   mongo:
     image: mongo
     ports:

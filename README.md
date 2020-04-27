@@ -1,40 +1,41 @@
 # Doctor Case Label
 
-- Doctor Case Labelling EHR System, Once login, bring assigned cases for them to review, each case can be tagged by a condition, 
-once click next, next ordered case is made available for review.  
+- Doctor Case Labelling EHR System, allows user login, bring assigned cases for review, each case can be tagged by a condition, 
+once click next, next case is made available for review.  
 
-- its a micro-service based project which has 2 services - user-service (maintain user operation), case-service (maintain case related operations)
+- its a micro-service based project which total 2 services and static html files to deliver UI 
+1. user-service (maintain user operation)
+2. case-service (maintain case related operations)
+3. ui - deployed inside Ngnix 
 
-## How to run (backend services + mongodb)
-1. In your terminal, navigate to home directory
-2. docker-compose up (this ll also populate test data for users (doctors), cases and conditions.
-3. Backend API server starts on port 8080 (user-service) and 8081 (case-service) open your browser and hit http://localhost:8080/status make sure you receive "OK"
-4. MongoDB server starts at port 27017 and exposed to connect out of docker context.   
+## How to run (Nginx + services + mongodb)
+1. clone repository, In your terminal, navigate to home directory
+2. docker-compose up (this also populates test data for users (doctors), cases and conditions) - wait couple of mins until all services are up
+3. open browser and hit http://localhost/ (should bring login page)
+4. Login with "user1@gmail.com" or "user2@gmail.com" both account passwor is : test123   (we have inserted and assigned 4 cases to each account)
 
-## How to run the Client
-1. In another terminal, navigate to the `ui` directory (inside home).
-2. Run `npm install` to install all dependencies.
-3. Run `npm start` to start the app
+4. Backend API server starts on port 8080 (user-service) and 8081 (case-service)
+5. MongoDB server starts at port 27017 and exposed to connect out of docker context.   
 
-## Check if all good
-1. While client is running, open your browser in http://localhost:3000/
-2. enter user name as "user1@gmail.com" and password as : test123
-3. we have 4 cases inserted default to review
+
+## health checks 
+1. user-service http://localhost:8080/status should return "OK"
+2. case-service http://localhost:8081/status should return "OK"
+
 
 ## sevice interaction diagram
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=13UJji9IwnV3RFC2aVWUWImTS2jS0srIl"/>
+  <img src="https://drive.google.com/uc?export=view&id=17mAMT1Ps7k5pck7vcMiqyPPm8fU3loKp"/>
   <br/>
 </p>
 
-
 ## data-model diagram
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1DO4y1M8QPzFyxv2UH0BjS0O07B0O8T5b"/>
+  <img src="https://drive.google.com/uc?export=view&id=1eiMfzaeYzSENbaDO0Gup1MCAO5jpfECo"/>
   <br/>
 </p>
 
 ## user manual
+https://docs.google.com/document/d/1NeD6ytZRzrMz7-ZaU-3tepCT4Wj-NZZqAVT6m8sIpGU/edit?usp=sharing
 
-https://drive.google.com/open?id=1J450LPDpMU2KxwnJ4IZs-kAs_LXOyc5o
 
