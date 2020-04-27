@@ -1,7 +1,7 @@
 # Doctor Case Label
 
-- Doctor Case Labelling EHR System, Once login, bring assigned cases for them to review, each case can be tagged by a condition, 
-once click next, next ordered case is made available for review.  
+- Doctor Case Labelling EHR System, allows user login, bring assigned cases for review, each case can be tagged by a condition, 
+once click next, next case is made available for review.  
 
 - its a micro-service based project which total 2 services and static html files to deliver UI 
 1. user-service (maintain user operation)
@@ -9,7 +9,7 @@ once click next, next ordered case is made available for review.
 3. ui - deployed inside Ngnix 
 
 ## How to run (Nginx + services + mongodb)
-1. In your terminal, navigate to home directory
+1. clone repository, In your terminal, navigate to home directory
 2. docker-compose up (this also populates test data for users (doctors), cases and conditions) - wait couple of mins until all services are up
 3. open browser and hit http://localhost/ (should bring login page)
 4. Login with "user1@gmail.com" or "user2@gmail.com" both account passwor is : test123   (we have inserted and assigned 4 cases to each account)
